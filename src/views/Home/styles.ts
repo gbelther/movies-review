@@ -77,6 +77,24 @@ export const ContentMoviesWrapper = styled.div`
   align-items: center;
 `;
 
+export const SearchFilterWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 0.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const InputTextFilter = styled.input`
+  width: inherit;
+  height: 100%;
+  padding: 0 0.5rem;
+  border: 0;
+  border-radius: 4px;
+`;
+
 export const MovieList = styled.ul`
   width: 100%;
   height: 100%;
@@ -151,17 +169,3 @@ export const MovieAction = styled.div`
 `;
 
 export const MovieRating = styled.div``;
-
-export const Button = styled.button`
-  background: ${({ theme }) => theme.colors.success};
-  height: 2rem;
-  padding: 0.25rem 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 4px;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-`;

@@ -1,9 +1,10 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import { useTheme } from "styled-components";
 
+import { Button } from "../../components/Button";
 import { StarsRating } from "../../components/StarsRating";
 
 import {
-  Button,
   Container,
   ContentMoviesWrapper,
   MovieAction,
@@ -22,6 +23,8 @@ import {
   GenreItem,
   GenreFilterTitle,
   GenreFilterWrapper,
+  SearchFilterWrapper,
+  InputTextFilter,
 } from "./styles";
 
 interface IMovie {
@@ -79,18 +82,23 @@ const categories = [
 ];
 
 const Home = () => {
+  const theme = useTheme();
+
   const [moviesFiltered, setMoviesFiltered] = useState<IMovie[]>(movies);
+  const [filterText, setFilterText] = useState("");
   const [categoriesIdAvailable, setCategoriesIdAvailable] = useState(() => {
     return categories.map((category) => category.id);
   });
 
   useEffect(() => {
-    const moviesAvailable = movies.filter((movie) =>
-      categoriesIdAvailable.includes(movie.categoryId)
+    const moviesAvailable = movies.filter(
+      (movie) =>
+        categoriesIdAvailable.includes(movie.categoryId) &&
+        movie.name.toLowerCase().includes(filterText)
     );
 
     setMoviesFiltered(moviesAvailable);
-  }, [categoriesIdAvailable]);
+  }, [categoriesIdAvailable, filterText]);
 
   const handleFilterByCategory = (event: ChangeEvent<HTMLInputElement>) => {
     const categoryId = event.target.value;
@@ -104,6 +112,10 @@ const Home = () => {
     } else {
       setCategoriesIdAvailable((prevState) => [...prevState, categoryId]);
     }
+  };
+
+  const handleFilterByTitle = (event: ChangeEvent<HTMLInputElement>) => {
+    setFilterText(event.target.value.toLowerCase());
   };
 
   return (
@@ -128,6 +140,16 @@ const Home = () => {
         </GenreItemWrapper>
       </GenreFilterWrapper>
       <ContentMoviesWrapper>
+        <SearchFilterWrapper>
+          <InputTextFilter
+            type="text"
+            placeholder="Pesquisar filme..."
+            onChange={handleFilterByTitle}
+          />
+          <Button backgroundColor={theme.colors.success}>
+            ADICIONAR FILME
+          </Button>
+        </SearchFilterWrapper>
         <MovieList>
           {moviesFiltered.map((movie) => (
             <MovieItem key={movie.id}>
@@ -141,7 +163,9 @@ const Home = () => {
                   <MovieRating>
                     <StarsRating rating={movie.rating} />
                   </MovieRating>
-                  <Button>DETALHES</Button>
+                  <Button backgroundColor={theme.colors.success}>
+                    DETALHES
+                  </Button>
                 </MovieAction>
               </MovieWrapper>
             </MovieItem>
