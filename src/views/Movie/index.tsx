@@ -1,6 +1,9 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useTheme } from "styled-components";
 import { Button } from "../../components/Button";
 import { StarsRating } from "../../components/StarsRating";
+import { apimovies } from "../../services/api";
 
 import {
   AddReviewTitle,
@@ -27,6 +30,18 @@ import {
 
 const Movie = () => {
   const theme = useTheme();
+  const params = useParams();
+
+  useEffect(() => {
+    const getMovie = async () => {
+      const { id }: any = params;
+      const response = await apimovies.get(`movies/${id}`);
+
+      console.log(response);
+    };
+
+    getMovie();
+  }, []);
 
   return (
     <Container>

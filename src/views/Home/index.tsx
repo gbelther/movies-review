@@ -119,7 +119,7 @@ const Home = () => {
   };
 
   const handleRedirectToMovieDetails = (id: string) => {
-    history.push("/movie");
+    history.push(`/movie/${id}`);
   };
 
   return (
