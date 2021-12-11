@@ -1,11 +1,19 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import { Header } from "./components/Header";
 import Home from "./views/Home";
+import Movie from "./views/Movie";
 
 function App() {
   return (
     <>
       <Header />
-      <Home />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<Movie />} />
+        </Routes>
+      </Router>
     </>
   );
 }
