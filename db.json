@@ -6,7 +6,10 @@
       "rating": 3.4,
       "image": "images/homem-aranha.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
-      "categoryId": "cat-2"
+      "category": {
+        "id": "cat-2",
+        "name": "Aventura"
+      }
     },
     {
       "id": "movie-2",
@@ -14,7 +17,10 @@
       "rating": 4.65,
       "image": "images/homem-aranha.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
-      "categoryId": "cat-1"
+      "category": {
+        "id": "cat-1",
+        "name": "Ação"
+      }
     },
     {
       "id": "movie-3",
@@ -22,21 +28,10 @@
       "rating": 4.2,
       "image": "images/homem-aranha.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
-      "categoryId": "cat-3"
-    }
-  ],
-  "categories": [
-    {
-      "id": "cat-1",
-      "name": "Ação"
-    },
-    {
-      "id": "cat-2",
-      "name": "Aventura"
-    },
-    {
-      "id": "cat-3",
-      "name": "Romance"
+      "category": {
+        "id": "cat-3",
+        "name": "Romance"
+      }
     }
   ]
 }

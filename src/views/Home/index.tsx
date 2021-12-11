@@ -1,8 +1,10 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { StarsRating } from "../../components/StarsRating";
+import { apimovies } from "../../services/api";
 
 import {
   Container,
@@ -27,63 +29,25 @@ import {
   InputTextFilter,
 } from "./styles";
 
+interface ICategory {
+  id: string;
+  name: string;
+}
 interface IMovie {
   id: string;
   name: string;
   rating: number;
   image: string;
   description: string;
-  categoryId: string;
+  category: ICategory;
 }
-
-const movies: IMovie[] = [
-  {
-    id: "movie-1",
-    name: "Homem-Aranha",
-    rating: 3.4,
-    image: "images/homem-aranha.png",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
-    categoryId: "cat-2",
-  },
-  {
-    id: "movie-2",
-    name: "Capitão América",
-    rating: 4.65,
-    image: "images/homem-aranha.png",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
-    categoryId: "cat-1",
-  },
-  {
-    id: "movie-3",
-    name: "Os Vingadores",
-    rating: 4.2,
-    image: "images/homem-aranha.png",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
-    categoryId: "cat-3",
-  },
-];
-
-const categories = [
-  {
-    id: "cat-1",
-    name: "Ação",
-  },
-  {
-    id: "cat-2",
-    name: "Aventura",
-  },
-  {
-    id: "cat-3",
-    name: "Romance",
-  },
-];
 
 const Home = () => {
   const theme = useTheme();
+  const history = useHistory();
 
+  const [categories, setCategories] = useState<ICategory[]>([]);
+  const [movies, setMovies] = useState<IMovie[]>([]);
   const [moviesFiltered, setMoviesFiltered] = useState<IMovie[]>(movies);
   const [filterText, setFilterText] = useState("");
   const [categoriesIdAvailable, setCategoriesIdAvailable] = useState(() => {
@@ -91,14 +55,50 @@ const Home = () => {
   });
 
   useEffect(() => {
+    getMovies();
+  }, []);
+
+  useEffect(() => {
+    const categoriesId = Array.from(
+      new Set(movies.map((movie) => movie.category.id))
+    );
+
+    const categoriesFormatted = categoriesId.map(
+      (id) => movies.filter((movie) => movie.category.id === id)[0]?.category
+    );
+
+    setCategoriesIdAvailable(categoriesId);
+    setCategories(categoriesFormatted);
+  }, [movies]);
+
+  useEffect(() => {
     const moviesAvailable = movies.filter(
       (movie) =>
-        categoriesIdAvailable.includes(movie.categoryId) &&
+        categoriesIdAvailable.includes(movie.category.id) &&
         movie.name.toLowerCase().includes(filterText)
     );
 
     setMoviesFiltered(moviesAvailable);
-  }, [categoriesIdAvailable, filterText]);
+  }, [categoriesIdAvailable, filterText, movies]);
+
+  const getMovies = async () => {
+    const response = await apimovies.get("movies");
+
+    const moviesFormatted: IMovie[] = response.data.map((movie: IMovie) => {
+      const { id, name, rating, image, description, category } = movie;
+
+      return {
+        id,
+        name,
+        rating,
+        image,
+        description,
+        category,
+      };
+    });
+
+    setMovies(moviesFormatted);
+  };
 
   const handleFilterByCategory = (event: ChangeEvent<HTMLInputElement>) => {
     const categoryId = event.target.value;
@@ -116,6 +116,10 @@ const Home = () => {
 
   const handleFilterByTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setFilterText(event.target.value.toLowerCase());
+  };
+
+  const handleRedirectToMovieDetails = (id: string) => {
+    history.push("/movie");
   };
 
   return (
@@ -163,7 +167,10 @@ const Home = () => {
                   <MovieRating>
                     <StarsRating rating={movie.rating} />
                   </MovieRating>
-                  <Button backgroundColor={theme.colors.success}>
+                  <Button
+                    backgroundColor={theme.colors.success}
+                    onClick={() => handleRedirectToMovieDetails(movie.id)}
+                  >
                     DETALHES
                   </Button>
                 </MovieAction>
