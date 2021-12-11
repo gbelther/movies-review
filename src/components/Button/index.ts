@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 interface IButtonProps {
-  color?: string;
+  backgroundColor?: string;
 }
 
 export const Button = styled.button<IButtonProps>`
-  background: ${({ theme, color }) =>
-    !!color ? color : theme.colors.background};
-  height: 2rem;
+  background-color: ${({ theme, backgroundColor }) =>
+    !!backgroundColor ? backgroundColor : theme.colors.background};
+  white-space: nowrap;
   padding: 0.25rem 1rem;
   font-size: 1rem;
   font-weight: bold;
