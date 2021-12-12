@@ -139,5 +139,19 @@
       "rating": 1,
       "id": 9
     }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Ação"
+    },
+    {
+      "id": 2,
+      "name": "Aventura"
+    },
+    {
+      "id": 3,
+      "name": "Romance"
+    }
   ]
 }

@@ -28,12 +28,13 @@ import {
   SearchFilterWrapper,
   InputTextFilter,
 } from "./styles";
+import { ModalMovie } from "../../components/ModalMovie";
 
 interface ICategory {
   id: number;
   name: string;
 }
-interface IMovie {
+export interface IMovie {
   id: number;
   name: string;
   rating: number;
@@ -53,6 +54,7 @@ const Home = () => {
   const [categoriesIdAvailable, setCategoriesIdAvailable] = useState(() => {
     return categories.map((category) => category.id);
   });
+  const [showModalMovie, setShowModalMovie] = useState(false);
 
   useEffect(() => {
     getMovies();
@@ -150,7 +152,10 @@ const Home = () => {
             placeholder="Pesquisar filme..."
             onChange={handleFilterByTitle}
           />
-          <Button backgroundColor={theme.colors.success}>
+          <Button
+            backgroundColor={theme.colors.success}
+            onClick={() => setShowModalMovie(true)}
+          >
             ADICIONAR FILME
           </Button>
         </SearchFilterWrapper>
@@ -179,6 +184,13 @@ const Home = () => {
           ))}
         </MovieList>
       </ContentMoviesWrapper>
+      {showModalMovie && (
+        <ModalMovie
+          show={showModalMovie}
+          onClose={() => setShowModalMovie(false)}
+          updateMovies={setMovies}
+        />
+      )}
     </Container>
   );
 };
