@@ -1,13 +1,13 @@
 {
   "movies": [
     {
-      "id": "movie-1",
+      "id": 1,
       "name": "Homem-Aranha",
       "rating": 3.4,
       "image": "images/homem-aranha.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
       "category": {
-        "id": "cat-2",
+        "id": 2,
         "name": "Aventura"
       },
       "cast": [
@@ -24,13 +24,13 @@
       "director": "Martin Scorsese"
     },
     {
-      "id": "movie-2",
+      "id": 2,
       "name": "Capitão América",
       "rating": 4.65,
       "image": "images/homem-aranha.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
       "category": {
-        "id": "cat-1",
+        "id": 1,
         "name": "Ação"
       },
       "cast": [
@@ -47,13 +47,13 @@
       "director": "Steven Spielberg"
     },
     {
-      "id": "movie-3",
+      "id": 3,
       "name": "Os Vingadores",
       "rating": 4.2,
       "image": "images/homem-aranha.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
       "category": {
-        "id": "cat-3",
+        "id": 3,
         "name": "Romance"
       },
       "cast": [

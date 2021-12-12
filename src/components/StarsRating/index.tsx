@@ -1,33 +1,48 @@
 import { useMemo } from "react";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { Container } from "./styles";
+
+import { Container, EmptyStar, FillStar } from "./styles";
 
 interface IStarsRatingProps {
   starsQuantity?: number;
+  isSelectable?: boolean;
   rating: number;
+  onSelectStar?: (rating: number) => void;
 }
 
-const StarsRating = ({ starsQuantity = 5, rating }: IStarsRatingProps) => {
-  const fillStarsArray = useMemo(() => {
-    return [...Array(Math.round(rating)).map((number) => `${number}-fill`)];
-  }, [rating]);
+const StarsRating = ({
+  starsQuantity = 5,
+  rating,
+  isSelectable = false,
+  onSelectStar,
+}: IStarsRatingProps) => {
+  const starsArray = useMemo(() => {
+    const ratingRounded = Math.round(rating);
+    return [...Array(starsQuantity)].map((_, index) => index < ratingRounded);
+  }, [rating, starsQuantity]);
 
-  const emptyStarsArray = useMemo(() => {
-    return [
-      ...Array(starsQuantity - fillStarsArray.length).map(
-        (number) => `${number}-empty`
-      ),
-    ];
-  }, [fillStarsArray, starsQuantity]);
+  const handleSelectStar = (index: number) => {
+    if (isSelectable && onSelectStar) {
+      onSelectStar && onSelectStar(index + 1);
+    }
+  };
 
   return (
     <Container>
-      {fillStarsArray.map((star) => (
-        <AiFillStar key={star} color="yellow" />
-      ))}
-      {emptyStarsArray.map((star) => (
-        <AiOutlineStar key={star} color="yellow" />
-      ))}
+      {starsArray.map((star, index) =>
+        star ? (
+          <FillStar
+            key={`${index}-fill`}
+            isSelectable={isSelectable}
+            onClick={() => handleSelectStar(index)}
+          />
+        ) : (
+          <EmptyStar
+            key={`${index}-empty`}
+            isSelectable={isSelectable}
+            onClick={() => handleSelectStar(index)}
+          />
+        )
+      )}
     </Container>
   );
 };

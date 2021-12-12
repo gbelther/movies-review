@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "styled-components";
 import { Button } from "../../components/Button";
@@ -28,12 +28,18 @@ import {
   Title,
 } from "./styles";
 
+interface IReview {
+  author: string;
+  rating: number;
+  comment: string;
+}
+
 interface ICategory {
-  id: string;
+  id: number;
   name: string;
 }
 interface IMovie {
-  id: string;
+  id: number;
   name: string;
   rating: number;
   image: string;
@@ -49,6 +55,11 @@ const Movie = () => {
   const params = useParams();
 
   const [movieDetails, setMovieDetails] = useState<IMovie>();
+  const [review, setReview] = useState<IReview>({
+    author: "",
+    rating: 1,
+    comment: "",
+  });
 
   useEffect(() => {
     const getMovie = async () => {
@@ -83,6 +94,30 @@ const Movie = () => {
     getMovie();
   }, [params]);
 
+  const handleSelectRating = (rating: number) => {
+    setReview((prevState) => ({
+      ...prevState,
+      rating,
+    }));
+  };
+
+  const handleCommentHandle = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setReview((prevState) => ({
+      ...prevState,
+      comment: event.target.value,
+    }));
+  };
+
+  const handleSubmitReview = () => {
+    console.log(review);
+
+    setReview({
+      author: "",
+      rating: 1,
+      comment: "",
+    });
+  };
+
   return (
     <Container>
       {!!movieDetails && (
@@ -106,7 +141,11 @@ const Movie = () => {
                 </Info>
                 <Info>
                   <strong>Elenco: </strong>
-                  {movieDetails.cast}
+                  {movieDetails.cast.map((cast, index) =>
+                    movieDetails.cast.length - 1 === index
+                      ? `${cast}.`
+                      : `${cast}, `
+                  )}
                 </Info>
               </InfoWrapper>
             </Details>
@@ -120,10 +159,22 @@ const Movie = () => {
               <AddReviewWrapper>
                 <AddReviewTitle>
                   <strong>Deixe sua avaliação</strong>
-                  <StarsRating rating={3} />
+                  <StarsRating
+                    rating={review.rating}
+                    isSelectable
+                    onSelectStar={handleSelectRating}
+                  />
                 </AddReviewTitle>
-                <ReviewField />
-                <Button backgroundColor={theme.colors.secondary}>Postar</Button>
+                <ReviewField
+                  value={review.comment}
+                  onChange={handleCommentHandle}
+                />
+                <Button
+                  backgroundColor={theme.colors.secondary}
+                  onClick={() => handleSubmitReview()}
+                >
+                  Postar
+                </Button>
               </AddReviewWrapper>
               <Reviews>
                 <Review>

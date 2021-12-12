@@ -30,11 +30,11 @@ import {
 } from "./styles";
 
 interface ICategory {
-  id: string;
+  id: number;
   name: string;
 }
 interface IMovie {
-  id: string;
+  id: number;
   name: string;
   rating: number;
   image: string;
@@ -101,7 +101,7 @@ const Home = () => {
   };
 
   const handleFilterByCategory = (event: ChangeEvent<HTMLInputElement>) => {
-    const categoryId = event.target.value;
+    const categoryId = Number(event.target.value);
 
     const isActive = categoriesIdAvailable.includes(categoryId);
 
@@ -118,7 +118,7 @@ const Home = () => {
     setFilterText(event.target.value.toLowerCase());
   };
 
-  const handleRedirectToMovieDetails = (id: string) => {
+  const handleRedirectToMovieDetails = (id: number) => {
     history.push(`/movie/${id}`);
   };
 
