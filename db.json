@@ -9,7 +9,19 @@
       "category": {
         "id": "cat-2",
         "name": "Aventura"
-      }
+      },
+      "cast": [
+        "Jack Chan",
+        "Will Smith",
+        "Neymar Junior",
+        "Leonardo DiCaprio",
+        "Dwayne Johnson",
+        "Brad Pitt",
+        "Adam Sandler",
+        "Johnny Depp"
+      ],
+      "year": 2004,
+      "director": "Martin Scorsese"
     },
     {
       "id": "movie-2",
@@ -20,7 +32,19 @@
       "category": {
         "id": "cat-1",
         "name": "Ação"
-      }
+      },
+      "cast": [
+        "Jack Chan",
+        "Will Smith",
+        "Neymar Junior",
+        "Leonardo DiCaprio",
+        "Dwayne Johnson",
+        "Brad Pitt",
+        "Adam Sandler",
+        "Johnny Depp"
+      ],
+      "year": 2015,
+      "director": "Steven Spielberg"
     },
     {
       "id": "movie-3",
@@ -31,7 +55,19 @@
       "category": {
         "id": "cat-3",
         "name": "Romance"
-      }
+      },
+      "cast": [
+        "Jack Chan",
+        "Will Smith",
+        "Neymar Junior",
+        "Leonardo DiCaprio",
+        "Dwayne Johnson",
+        "Brad Pitt",
+        "Adam Sandler",
+        "Johnny Depp"
+      ],
+      "year": 2021,
+      "director": "Quentin Tarantino"
     }
   ]
 }
