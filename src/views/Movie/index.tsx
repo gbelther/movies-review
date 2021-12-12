@@ -147,8 +147,31 @@ const Movie = () => {
     }));
   };
 
-  const handleSubmitReview = () => {
-    console.log(review);
+  const handleSubmitReview = async () => {
+    const { id }: any = params;
+
+    const reviewData = {
+      movieId: Number(id),
+      author: review.author,
+      date: new Date(),
+      comment: review.comment,
+      rating: review.rating,
+    };
+
+    const response = await apimovies.post("comments", reviewData);
+
+    const { id: commentId, movieId, author, date, comment } = response.data;
+
+    setComments((prevState) => [
+      ...prevState,
+      {
+        id: commentId,
+        movieId,
+        author,
+        date,
+        comment,
+      },
+    ]);
 
     setReview({
       author: "",
@@ -219,7 +242,7 @@ const Movie = () => {
                 {comments.map((comment) => (
                   <Review key={comment.id}>
                     <ReviewInformation>
-                      {comment.author} | {comment.date}
+                      {comment.author || "Autor desconhecido"} | {comment.date}
                     </ReviewInformation>
                     <ReviewText>{comment.comment}</ReviewText>
                   </Review>

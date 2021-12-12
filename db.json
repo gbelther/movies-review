@@ -75,29 +75,45 @@
       "id": 1,
       "movieId": 1,
       "author": "João Pereira",
-      "date": "12/04/2021",
+      "date": "2021-12-11T19:44:29.570Z",
       "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
     },
     {
       "id": 2,
       "movieId": 1,
       "author": "Klebin do Bar",
-      "date": "14/04/2021",
+      "date": "2021-12-15T19:44:29.570Z",
       "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
     },
     {
       "id": 3,
       "movieId": 1,
       "author": "Jenival Lanches",
-      "date": "15/04/2021",
+      "date": "2021-12-16T19:44:29.570Z",
       "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
     },
     {
       "id": 4,
       "movieId": 2,
       "author": "Maradona",
-      "date": "14/04/2021",
+      "date": "2021-12-17T19:44:29.570Z",
       "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
+    },
+    {
+      "movieId": 1,
+      "author": "",
+      "date": "2021-12-18T19:44:29.570Z",
+      "comment": "O filme é incrível, recomendo muito",
+      "rating": 4,
+      "id": 5
+    },
+    {
+      "movieId": 1,
+      "author": "",
+      "date": "2021-12-12T19:48:44.594Z",
+      "comment": "O filme é incrível",
+      "rating": 3,
+      "id": 6
     }
   ]
 }
