@@ -28,6 +28,14 @@ import {
   Title,
 } from "./styles";
 
+interface IComment {
+  id: number;
+  movieId: number;
+  author: string;
+  date: string;
+  comment: string;
+}
+
 interface IReview {
   author: string;
   rating: number;
@@ -55,6 +63,7 @@ const Movie = () => {
   const params = useParams();
 
   const [movieDetails, setMovieDetails] = useState<IMovie>();
+  const [comments, setComments] = useState<IComment[]>([]);
   const [review, setReview] = useState<IReview>({
     author: "",
     rating: 1,
@@ -92,6 +101,36 @@ const Movie = () => {
     };
 
     getMovie();
+  }, [params]);
+
+  useEffect(() => {
+    const getComments = async () => {
+      const { id }: any = params;
+
+      const response = await apimovies.get("comments", {
+        params: {
+          movieId: id,
+        },
+      });
+
+      const commentsFormatted: IComment[] = response.data.map(
+        (commentData: IComment) => {
+          const { id: commentId, movieId, author, date, comment } = commentData;
+
+          return {
+            id: commentId,
+            movieId,
+            author,
+            date,
+            comment,
+          };
+        }
+      );
+
+      setComments(commentsFormatted);
+    };
+
+    getComments();
   }, [params]);
 
   const handleSelectRating = (rating: number) => {
@@ -177,30 +216,14 @@ const Movie = () => {
                 </Button>
               </AddReviewWrapper>
               <Reviews>
-                <Review>
-                  <ReviewInformation>
-                    Gabriel Belther Santos | 14/12/2021 às 12:58
-                  </ReviewInformation>
-                  <ReviewText>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Sequi odio accusamus magnam autem eum officiis ad
-                    reiciendis, aut, odit, praesentium provident soluta
-                    recusandae molestiae eos doloremque. Consequuntur suscipit
-                    minus eligendi.
-                  </ReviewText>
-                </Review>
-                <Review>
-                  <ReviewInformation>
-                    Gabriel Belther Santos | 14/12/2021 às 12:58
-                  </ReviewInformation>
-                  <ReviewText>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Sequi odio accusamus magnam autem eum officiis ad
-                    reiciendis, aut, odit, praesentium provident soluta
-                    recusandae molestiae eos doloremque. Consequuntur suscipit
-                    minus eligendi.
-                  </ReviewText>
-                </Review>
+                {comments.map((comment) => (
+                  <Review key={comment.id}>
+                    <ReviewInformation>
+                      {comment.author} | {comment.date}
+                    </ReviewInformation>
+                    <ReviewText>{comment.comment}</ReviewText>
+                  </Review>
+                ))}
               </Reviews>
             </ReviewWrapper>
           </MovieContentWrapper>

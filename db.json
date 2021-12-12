@@ -69,5 +69,35 @@
       "year": 2021,
       "director": "Quentin Tarantino"
     }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "movieId": 1,
+      "author": "João Pereira",
+      "date": "12/04/2021",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
+    },
+    {
+      "id": 2,
+      "movieId": 1,
+      "author": "Klebin do Bar",
+      "date": "14/04/2021",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
+    },
+    {
+      "id": 3,
+      "movieId": 1,
+      "author": "Jenival Lanches",
+      "date": "15/04/2021",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
+    },
+    {
+      "id": 4,
+      "movieId": 2,
+      "author": "Maradona",
+      "date": "14/04/2021",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
+    }
   ]
 }
