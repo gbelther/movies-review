@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   gap: 1rem;
 `;
@@ -98,6 +98,7 @@ export const ReviewField = styled.textarea`
 `;
 
 export const Reviews = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,6 +106,7 @@ export const Reviews = styled.ul`
 `;
 
 export const Review = styled.li`
+  width: 100%;
   list-style: none;
   text-align: justify;
   border: 1px solid ${({ theme }) => theme.colors.primary};

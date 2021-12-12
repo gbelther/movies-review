@@ -114,6 +114,30 @@
       "comment": "O filme é incrível",
       "rating": 3,
       "id": 6
+    },
+    {
+      "movieId": 1,
+      "author": "",
+      "date": "2021-12-12T21:15:53.217Z",
+      "comment": "Mais uma avaliação",
+      "rating": 4,
+      "id": 7
+    },
+    {
+      "movieId": 1,
+      "author": "",
+      "date": "2021-12-12T21:17:20.684Z",
+      "comment": "Teste",
+      "rating": 1,
+      "id": 8
+    },
+    {
+      "movieId": 1,
+      "author": "",
+      "date": "2021-12-12T21:17:45.806Z",
+      "comment": "",
+      "rating": 1,
+      "id": 9
     }
   ]
 }
