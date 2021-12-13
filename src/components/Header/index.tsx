@@ -21,7 +21,7 @@ const Header = () => {
     <Container>
       <LogoWrapper onClick={() => handleRedirectToHome()}>
         <LogoIcon />
-        <LogoTitle>Movie-Review</LogoTitle>
+        <LogoTitle>Anthorflix</LogoTitle>
       </LogoWrapper>
       <UserLoginWrapper>
         <UserIcon />
