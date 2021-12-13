@@ -1,7 +1,6 @@
-import { useTheme } from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import {
-  Avatar,
   Container,
   LogoIcon,
   LogoTitle,
@@ -12,16 +11,20 @@ import {
 } from "./styles";
 
 const Header = () => {
-  const theme = useTheme();
+  const history = useHistory();
+
+  const handleRedirectToHome = () => {
+    history.push("/");
+  };
 
   return (
     <Container>
-      <LogoWrapper>
+      <LogoWrapper onClick={() => handleRedirectToHome()}>
         <LogoIcon />
         <LogoTitle>Movie-Review</LogoTitle>
       </LogoWrapper>
       <UserLoginWrapper>
-        {false ? <Avatar src="" /> : <UserIcon />}
+        <UserIcon />
         <Username isAuthenticated={false}>{"Fazer login"}</Username>
       </UserLoginWrapper>
     </Container>

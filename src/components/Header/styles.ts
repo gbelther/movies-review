@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { GiWolfHowl } from "react-icons/gi";
 import { HiUserCircle } from "react-icons/hi";
 import { BiCameraMovie } from "react-icons/bi";
 
@@ -19,6 +18,7 @@ export const LogoWrapper = styled.section`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 `;
 
 export const LogoIcon = styled(BiCameraMovie)`
@@ -50,13 +50,6 @@ export const UserLoginWrapper = styled.section`
 export const UserIcon = styled(HiUserCircle)`
   height: 2rem;
   width: 2rem;
-`;
-
-export const Avatar = styled.img`
-  height: 2rem;
-  width: 2rem;
-  border: 1px solid ${({ theme }) => theme.colors.success};
-  border-radius: 50%;
 `;
 
 interface IUsernameProps {
