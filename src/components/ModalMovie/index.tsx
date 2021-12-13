@@ -21,10 +21,25 @@ import {
   Title,
 } from "./styles";
 
+interface ICurrentInfos {
+  id: number;
+  name: string;
+  description: string;
+  category: {
+    id: number;
+    name: string;
+  };
+  cast: string[];
+  year: number;
+  director: string;
+}
+
 interface IModalMovieProps {
   show: boolean;
   onClose: () => void;
-  updateMovies: Dispatch<React.SetStateAction<IMovie[]>>;
+  updateMovies?: Dispatch<React.SetStateAction<IMovie[]>>;
+  type?: "create" | "edit";
+  currentInfos?: ICurrentInfos;
 }
 
 interface ICategory {
@@ -48,7 +63,13 @@ const modalStyles = {
   },
 };
 
-const ModalMovie = ({ show, onClose, updateMovies }: IModalMovieProps) => {
+const ModalMovie = ({
+  show,
+  onClose,
+  updateMovies,
+  type = "create",
+  currentInfos,
+}: IModalMovieProps) => {
   const theme = useTheme();
 
   const [loadingSubmit, setLoadingSubmit] = useState(false);
@@ -82,6 +103,25 @@ const ModalMovie = ({ show, onClose, updateMovies }: IModalMovieProps) => {
 
     getCategories();
   }, []);
+
+  useEffect(() => {
+    if (type === "edit" && !!currentInfos) {
+      const { cast, category, description, director, year, name } =
+        currentInfos;
+
+      setName(name);
+      setYear(year);
+      setDirector(director);
+      setCategory(category.id);
+      setCastsInput(
+        cast.map((current, index) => ({
+          name: current,
+          order: index,
+        }))
+      );
+      setDescription(description);
+    }
+  }, [type, currentInfos]);
 
   const verifyFormIsValid = () => {
     const castsInputOk = castsInput.every(
@@ -158,6 +198,14 @@ const ModalMovie = ({ show, onClose, updateMovies }: IModalMovieProps) => {
       return;
     }
 
+    if (type === "create") {
+      await submitCreate();
+    } else {
+      await submitEdit();
+    }
+  };
+
+  const submitCreate = async () => {
     try {
       const categorySubmit = {
         id: category,
@@ -177,7 +225,40 @@ const ModalMovie = ({ show, onClose, updateMovies }: IModalMovieProps) => {
 
       const response = await apimovies.post("movies", dataMovie);
 
-      updateMovies((prevState) => [...prevState, response.data]);
+      updateMovies &&
+        updateMovies((prevState) => [...prevState, response.data]);
+
+      onClose();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoadingSubmit(false);
+    }
+  };
+
+  const submitEdit = async () => {
+    try {
+      const categorySubmit = {
+        id: category,
+        name: categories.filter((categ) => categ.id === category)[0].name,
+      };
+
+      const dataMovie = {
+        name,
+        description,
+        category: categorySubmit,
+        cast: castsInput.map((cast) => cast.name),
+        year,
+        director,
+      };
+
+      const response = await apimovies.patch(
+        `movies/${currentInfos?.id}`,
+        dataMovie
+      );
+
+      updateMovies &&
+        updateMovies((prevState) => [...prevState, response.data]);
 
       onClose();
     } catch (error) {

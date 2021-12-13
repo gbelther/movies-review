@@ -7,8 +7,8 @@
       "image": "images/homem-aranha.png",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
       "category": {
-        "id": 2,
-        "name": "Aventura"
+        "id": 1,
+        "name": "Ação"
       },
       "cast": [
         "Jack Chan",
@@ -20,7 +20,7 @@
         "Adam Sandler",
         "Johnny Depp"
       ],
-      "year": 2004,
+      "year": 2006,
       "director": "Martin Scorsese"
     },
     {
@@ -98,46 +98,6 @@
       "author": "Maradona",
       "date": "2021-12-17T19:44:29.570Z",
       "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!"
-    },
-    {
-      "movieId": 1,
-      "author": "",
-      "date": "2021-12-18T19:44:29.570Z",
-      "comment": "O filme é incrível, recomendo muito",
-      "rating": 4,
-      "id": 5
-    },
-    {
-      "movieId": 1,
-      "author": "",
-      "date": "2021-12-12T19:48:44.594Z",
-      "comment": "O filme é incrível",
-      "rating": 3,
-      "id": 6
-    },
-    {
-      "movieId": 1,
-      "author": "",
-      "date": "2021-12-12T21:15:53.217Z",
-      "comment": "Mais uma avaliação",
-      "rating": 4,
-      "id": 7
-    },
-    {
-      "movieId": 1,
-      "author": "",
-      "date": "2021-12-12T21:17:20.684Z",
-      "comment": "Teste",
-      "rating": 1,
-      "id": 8
-    },
-    {
-      "movieId": 1,
-      "author": "",
-      "date": "2021-12-12T21:17:45.806Z",
-      "comment": "",
-      "rating": 1,
-      "id": 9
     }
   ],
   "categories": [

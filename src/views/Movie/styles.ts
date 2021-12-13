@@ -45,6 +45,14 @@ export const InfoWrapper = styled.ul`
   gap: 0.25rem;
 `;
 
+export const MovieEditWrapper = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Info = styled.li`
   font-size: 0.875rem;
 `;

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useTheme } from "styled-components";
 
 import { Button } from "../../components/Button";
+import { ModalMovie } from "../../components/ModalMovie";
 import { Spinner } from "../../components/Spinner";
 import { StarsRating } from "../../components/StarsRating";
 import { apimovies } from "../../services/api";
@@ -20,6 +21,7 @@ import {
   InfoWrapper,
   MovieContentWrapper,
   MovieDetailWrapper,
+  MovieEditWrapper,
   RatingWrapper,
   Review,
   ReviewField,
@@ -64,6 +66,7 @@ const Movie = () => {
   const theme = useTheme();
   const params = useParams();
 
+  const [showModalMovie, setShowModalMovie] = useState(false);
   const [loadingMovie, setLoadingMovie] = useState(false);
   const [loadingComments, setLoadingComments] = useState(false);
   const [loadingSubmitComment, setLoadingSubmitComment] = useState(false);
@@ -252,6 +255,14 @@ const Movie = () => {
                     )}
                   </Info>
                 </InfoWrapper>
+                <MovieEditWrapper>
+                  <Button
+                    backgroundColor={theme.colors.warning}
+                    onClick={() => setShowModalMovie(true)}
+                  >
+                    EDITAR
+                  </Button>
+                </MovieEditWrapper>
               </Details>
             </MovieDetailWrapper>
             <MovieContentWrapper>
@@ -303,6 +314,24 @@ const Movie = () => {
             </MovieContentWrapper>
           </>
         )
+      )}
+      {showModalMovie && (
+        <ModalMovie
+          show={showModalMovie}
+          onClose={() => setShowModalMovie(false)}
+          type="edit"
+          currentInfos={
+            movieDetails && {
+              id: movieDetails.id,
+              name: movieDetails.name,
+              description: movieDetails.description,
+              category: movieDetails.category,
+              cast: movieDetails.cast,
+              year: movieDetails.year,
+              director: movieDetails.director,
+            }
+          }
+        />
       )}
     </Container>
   );

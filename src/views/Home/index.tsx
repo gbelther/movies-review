@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { StarsRating } from "../../components/StarsRating";
+import { ModalMovie } from "../../components/ModalMovie";
 import { apimovies } from "../../services/api";
 
 import {
@@ -28,7 +29,6 @@ import {
   SearchFilterWrapper,
   InputTextFilter,
 } from "./styles";
-import { ModalMovie } from "../../components/ModalMovie";
 
 interface ICategory {
   id: number;
@@ -121,7 +121,7 @@ const Home = () => {
   };
 
   const handleRedirectToMovieDetails = (id: number) => {
-    history.push(`/movie/${id}`);
+    history.push(`/${id}`);
   };
 
   return (
