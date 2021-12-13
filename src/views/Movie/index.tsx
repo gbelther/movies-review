@@ -118,7 +118,7 @@ const Movie = () => {
 
     setLoadingMovie(true);
     getMovie();
-  }, [params]);
+  }, [params, history]);
 
   useEffect(() => {
     const getComments = async () => {
