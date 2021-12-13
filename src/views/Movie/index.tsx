@@ -249,7 +249,10 @@ const Movie = () => {
             <MovieDetailWrapper>
               <Details>
                 <Title>{movieDetails.name}</Title>
-                <ImageMovie src={movieDetails.image} />
+                <ImageMovie
+                  src={movieDetails.image}
+                  alt={`Capa do filme ${movieDetails.name}`}
+                />
                 <RatingWrapper>
                   <StarsRating rating={movieDetails.rating} />
                 </RatingWrapper>

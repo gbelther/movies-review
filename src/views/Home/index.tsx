@@ -162,7 +162,10 @@ const Home = () => {
         <MovieList>
           {moviesFiltered.map((movie) => (
             <MovieItem key={movie.id}>
-              <ImgMovie src="images/homem-aranha.png" />
+              <ImgMovie
+                src="images/homem-aranha.png"
+                alt={`Capa do filme ${movie.name}`}
+              />
               <MovieWrapper>
                 <MovieInfos>
                   <MovieTitle>{movie.name}</MovieTitle>
