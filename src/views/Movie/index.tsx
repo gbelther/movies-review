@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useTheme } from "styled-components";
 
 import { Button } from "../../components/Button";
@@ -65,11 +65,13 @@ interface IMovie {
 const Movie = () => {
   const theme = useTheme();
   const params = useParams();
+  const history = useHistory();
 
   const [showModalMovie, setShowModalMovie] = useState(false);
   const [loadingMovie, setLoadingMovie] = useState(false);
   const [loadingComments, setLoadingComments] = useState(false);
   const [loadingSubmitComment, setLoadingSubmitComment] = useState(false);
+  const [loadingDeleteMovie, setLoadingDeleteMovie] = useState(false);
   const [movieDetails, setMovieDetails] = useState<IMovie>();
   const [comments, setComments] = useState<IComment[]>([]);
   const [review, setReview] = useState<IReview>({
@@ -108,7 +110,7 @@ const Movie = () => {
           director,
         });
       } catch (error) {
-        console.log(error);
+        history.push("/");
       } finally {
         setLoadingMovie(false);
       }
@@ -222,6 +224,21 @@ const Movie = () => {
     }
   };
 
+  const handleDeleteMovie = async () => {
+    setLoadingDeleteMovie(true);
+
+    try {
+      const { id }: any = params;
+      await apimovies.delete(`movies/${id}`);
+
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoadingDeleteMovie(false);
+    }
+  };
+
   return (
     <Container>
       {loadingMovie ? (
@@ -261,6 +278,12 @@ const Movie = () => {
                     onClick={() => setShowModalMovie(true)}
                   >
                     EDITAR
+                  </Button>
+                  <Button
+                    backgroundColor={theme.colors.failure}
+                    onClick={() => handleDeleteMovie()}
+                  >
+                    {loadingDeleteMovie ? <Spinner /> : "EXCLUIR"}
                   </Button>
                 </MovieEditWrapper>
               </Details>

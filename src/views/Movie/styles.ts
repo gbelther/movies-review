@@ -49,7 +49,7 @@ export const MovieEditWrapper = styled.div`
   width: 100%;
   margin-top: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
 
