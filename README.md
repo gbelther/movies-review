@@ -24,6 +24,7 @@ yarn start ou npm run start
 
 ## Bugs Conhecidos
 - Todos os filmes estão com a mesma foto de capa
+- Layout da listagem de filmes para quando a descrição é muito pequena
 
 ## Abordagem do Projeto
 Este projeto foi desenvolvido aproveitando ao máximo o conceito de componentização presente no React, potencializado com o Styled-Components de forma a construir componentes desacoplados, sem muitas funcionalidades para não deixá-los muito complexos. Para simular uma API, foi utilizado também o Json-Server, que é uma biblioteca muito simples e poderosa, excelente para construir projetos sem um back-end. Ainda nesse aspecto de API, para as requisições foi construído uma instância do Axios, uma lib muito famosa e bastante usada quando é utilizado uma API Rest. Outro ponto importante foi a utilização do Typescript, que é um superset do Javascript, incluindo tipagem à linguagem, reduzindo bastante a probabilidade de aparecimento de erros e facilitando muito a manutenção do código, principalmente quando o Dev que for fazer esta manutenção for outro. Por fim, com o auxílio do React-router-dom, foi possível construir rotas de maneira simples e fácil para deixar o App mais escalável e organizado.
