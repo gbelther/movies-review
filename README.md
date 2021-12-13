@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# Movies-Review
+## Como Rodar o Projeto em sua Máquina
+Para rodar o projeto em sua máquina, siga os seguintes passos:
+Para clonar o repositório em uma pasta de seu computador
+```
+git clone git@github.com:gbelther/movies-review.git
+```
+Entrando na pasta pelo terminal
+```
+cd movies-review
+```
+Instalando as dependências do projeto
+```
+yarn ou npm i
+```
+Rodando o servidor Json-Server
+```
+yarn server ou npm run server
+```
+Rodando o App
+```
+yarn start ou npm run start
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Bugs Conhecidos
+- Todos os filmes estão com a mesma foto de capa
 
-## Available Scripts
+## Abordagem do Projeto
+Este projeto foi desenvolvido aproveitando ao máximo o conceito de componentização presente no React, potencializado com o Styled-Components de forma a construir componentes desacoplados, sem muitas funcionalidades para não deixá-los muito complexos. Para simular uma API, foi utilizado também o Json-Server, que é uma biblioteca muito simples e poderosa, excelente para construir projetos sem um back-end. Ainda nesse aspecto de API, para as requisições foi construído uma instância do Axios, uma lib muito famosa e bastante usada quando é utilizado uma API Rest. Outro ponto importante foi a utilização do Typescript, que é um superset do Javascript, incluindo tipagem à linguagem, reduzindo bastante a probabilidade de aparecimento de erros e facilitando muito a manutenção do código, principalmente quando o Dev que for fazer esta manutenção for outro. Por fim, com o auxílio do React-router-dom, foi possível construir rotas de maneira simples e fácil para deixar o App mais escalável e organizado.
 
-In the project directory, you can run:
+As tecnologias utilizadas, então, foram:
+- React
+- Typescript
+- Styled-Components
+- Json-server
+- Axios
+- React-router-dom
+- React-spinners
+- React-icons
+- React-Modal
 
-### `yarn start`
+## Comentários sobre as funcionalidades mais difíceis
+A maioria das funcionalidades do projeto eram demoradas de se fazer, porém não difíceis. A construção do layout acredito que seja a parte mais demorada do projeto, razão pela qual não foi possível desenvolver todas as funcionalidades desejadas neste intervalo de tempo de poucos dias. Não acredito que tenha alguma coisa difícil do que foi pedido.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Se eu tivesse mais tempo...
+O que eu faria de diferente se eu tivesse mais tempo, seria o tratamento melhor de erros em requisições, sempre retornando de uma forma mais amigável ao usuário os possíveis erros. Além disso, teria completado a parte de login, utilizado uma biblioteca de formulário como o react-hook-form juntamente com o Yup para validar melhor os campos, sempre pensando na experiência do usuário, teria colocado mais detalhes no layout do projeto e também desenvolvido a funcionalidade de comentar uma avaliação do usuário. Por fim, teria completado os testes automatizados.
