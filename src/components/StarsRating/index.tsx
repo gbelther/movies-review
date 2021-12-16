@@ -4,7 +4,7 @@ import { Container, EmptyStar, FillStar } from "./styles";
 
 interface IStarsRatingProps {
   starsQuantity?: number;
-  isSelectable?: boolean;
+  selectable?: boolean;
   rating: number;
   onSelectStar?: (rating: number) => void;
 }
@@ -12,7 +12,7 @@ interface IStarsRatingProps {
 const StarsRating = ({
   starsQuantity = 5,
   rating,
-  isSelectable = false,
+  selectable = false,
   onSelectStar,
 }: IStarsRatingProps) => {
   const starsArray = useMemo(() => {
@@ -21,7 +21,7 @@ const StarsRating = ({
   }, [rating, starsQuantity]);
 
   const handleSelectStar = (index: number) => {
-    if (isSelectable && onSelectStar) {
+    if (selectable && onSelectStar) {
       onSelectStar && onSelectStar(index + 1);
     }
   };
@@ -31,14 +31,16 @@ const StarsRating = ({
       {starsArray.map((star, index) =>
         star ? (
           <FillStar
+            title="star-fill"
             key={`${index}-fill`}
-            isSelectable={isSelectable}
+            selectable={selectable}
             onClick={() => handleSelectStar(index)}
           />
         ) : (
           <EmptyStar
+            title="star-empty"
             key={`${index}-empty`}
-            isSelectable={isSelectable}
+            selectable={selectable}
             onClick={() => handleSelectStar(index)}
           />
         )

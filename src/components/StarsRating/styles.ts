@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 interface IStarProps {
-  isSelectable?: boolean;
+  selectable: boolean;
 }
 
 export const Container = styled.section``;
@@ -10,8 +10,8 @@ export const Container = styled.section``;
 export const FillStar = styled(AiFillStar).attrs({
   color: "yellow",
 })<IStarProps>`
-  ${({ isSelectable }) =>
-    isSelectable &&
+  ${({ selectable }) =>
+    selectable &&
     css`
       :hover {
         font-size: 1.25rem;
@@ -22,8 +22,8 @@ export const FillStar = styled(AiFillStar).attrs({
 export const EmptyStar = styled(AiOutlineStar).attrs({
   color: "yellow",
 })<IStarProps>`
-  ${({ isSelectable }) =>
-    isSelectable &&
+  ${({ selectable }) =>
+    selectable &&
     css`
       :hover {
         font-size: 1.25rem;
