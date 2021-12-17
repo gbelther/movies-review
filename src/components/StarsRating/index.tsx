@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTheme } from "styled-components";
 
 import { Container, EmptyStar, FillStar } from "./styles";
 
@@ -15,9 +16,15 @@ const StarsRating = ({
   selectable = false,
   onSelectStar,
 }: IStarsRatingProps) => {
+  const theme = useTheme();
+
   const starsArray = useMemo(() => {
-    const ratingRounded = Math.round(rating);
-    return [...Array(starsQuantity)].map((_, index) => index < ratingRounded);
+    const ratingRounded = rating <= 0 ? 1 : Math.round(rating);
+    const starsQuantityRounded = starsQuantity <= 0 ? 1 : starsQuantity;
+
+    return [...Array(starsQuantityRounded)].map(
+      (_, index) => index < ratingRounded
+    );
   }, [rating, starsQuantity]);
 
   const handleSelectStar = (index: number) => {
@@ -32,15 +39,17 @@ const StarsRating = ({
         star ? (
           <FillStar
             title="star-fill"
+            color={theme.colors.yellow_rating}
             key={`${index}-fill`}
-            selectable={selectable}
+            selectable={selectable ? selectable : undefined}
             onClick={() => handleSelectStar(index)}
           />
         ) : (
           <EmptyStar
             title="star-empty"
+            color={theme.colors.yellow_rating}
             key={`${index}-empty`}
-            selectable={selectable}
+            selectable={selectable ? selectable : undefined}
             onClick={() => handleSelectStar(index)}
           />
         )

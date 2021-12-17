@@ -302,7 +302,7 @@ const Movie = () => {
                     <strong>Deixe sua avaliação</strong>
                     <StarsRating
                       rating={review.rating}
-                      isSelectable
+                      selectable
                       onSelectStar={handleSelectRating}
                     />
                   </AddReviewTitle>
