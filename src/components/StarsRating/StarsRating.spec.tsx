@@ -1,19 +1,11 @@
-/**
- * @jest-environment jsdom
- */
+import { screen } from "@testing-library/react";
 
-import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
 import { StarsRating } from ".";
-import { theme } from "../../global/styles/theme";
+import { renderTheme } from "../../util/renderTheme";
 
 describe("<StarsRating />", () => {
   it("should render correctly with rating equals 3", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={3} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={3} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
@@ -24,11 +16,7 @@ describe("<StarsRating />", () => {
   });
 
   it("should render correctly with rating equals 5", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={5} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={5} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
@@ -39,11 +27,7 @@ describe("<StarsRating />", () => {
   });
 
   it("should render correctly with rating equals 1", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={1} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={1} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
@@ -54,11 +38,7 @@ describe("<StarsRating />", () => {
   });
 
   it("should render correctly with rating equals 0", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={0} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={0} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
@@ -69,11 +49,7 @@ describe("<StarsRating />", () => {
   });
 
   it("should render correctly with rating negative", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={-1} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={-1} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
@@ -84,11 +60,7 @@ describe("<StarsRating />", () => {
   });
 
   it("should render correctly with rating higher than stars quantity", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={6} starsQuantity={5} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={6} starsQuantity={5} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
@@ -99,11 +71,7 @@ describe("<StarsRating />", () => {
   });
 
   it("should render correctly with starsQuantity equals 10", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={8} starsQuantity={10} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={8} starsQuantity={10} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
@@ -114,11 +82,7 @@ describe("<StarsRating />", () => {
   });
 
   it("should render correctly with starsQuantity negative", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <StarsRating rating={8} starsQuantity={-2} />
-      </ThemeProvider>
-    );
+    renderTheme(<StarsRating rating={8} starsQuantity={-2} />);
 
     const starsEmptyQuantity = screen.queryAllByTitle("star-empty").length;
     const starsFillQuantity = screen.queryAllByTitle("star-fill").length;
